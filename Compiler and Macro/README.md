@@ -51,7 +51,8 @@ TODO 2;
 
 ***Code example:***   
 
-        #include <stdio.h>       typedef enum
+    #include <stdio.h>      
+    typedef enum
     {
         GPIOA,
         GPIOB,
@@ -92,7 +93,7 @@ TODO 2;
             HAL_GPIO_WritePin(port, pin, HIGH);
         }  
     }
-        
+
     #elif MCU == ATMEGA 
     void daoTrangThaiDen(Pins pin, Status status)
     {
