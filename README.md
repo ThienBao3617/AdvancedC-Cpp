@@ -1,6 +1,6 @@
-****LESSON 1: COMPILER AND MACRO****
+# **LESSON 1: COMPILER AND MACRO**
 
-A. COMPILER        
+## A. COMPILER        
 ***How to make a program for computer?***   
 ***->Step 1***: Write the source codes (.c) and header files (.h).   
 ***->Step 2***: Pre-process the source codes according to
@@ -16,9 +16,9 @@ codes and the library object codes (.lib, .a)to produce the
 executable code (.exe).  
 ***->Step 5***: Load the executable code into computer memory.  
 ***->Step 6***: Run the executable code.   
-![alt text](image.png)
+![alt text](assets/flow%20chart.png)
 
-B. MACRO   
+## B. MACRO   
 So MACRO is a word used to refer to the information processed in the preprocessor. Divided into 3 main groups:    
     - Header or Library files: #include  
     - Replace macro_name by macro_value before compile to the .bin file: #define, #undef   
