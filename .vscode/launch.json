@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Github/AdvancedC-Cpp/Goto and setjmp",
-      "program": "d:/Github/AdvancedC-Cpp/Goto and setjmp/build/Debug/outDebug",
+      "cwd": "d:/Github/AdvancedC-Cpp/Goto and setjmp.h",
+      "program": "d:/Github/AdvancedC-Cpp/Goto and setjmp.h/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
