@@ -16,3 +16,6 @@ https://docs.google.com/presentation/d/1qn25cKZMMsMNn__T9WJTyLGYnBzbF18PkLn3WoZ-
 
 Lesson 6: Goto - setjmp.h         
 https://docs.google.com/presentation/d/1epwryNe1xrrjueDalGWJxwThleugfi49QbHg4tsH_o4/edit#slide=id.p
+
+Lesson 7: Bitmask      
+https://docs.google.com/presentation/d/1UefvipMD0YtiYfuCK7RSIYNJTY2F3C2fWZmbeqOHmyY/edit?usp=sharing
