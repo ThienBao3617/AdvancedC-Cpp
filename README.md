@@ -205,6 +205,10 @@ The stdarg.h header file in C allows functions to accept a variable number of ar
     }
 
     
-**Output**
+**Output 1**
 
-![alt text](assets/out%20put.png)
+![alt text](assets/output.png)
+
+**Output 2**
+
+![alt text](assets/output2.png)
