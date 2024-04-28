@@ -123,4 +123,88 @@ TODO 2;
     return 0;
     }
 
+
+# **LESSON 2: STDARG AND ASSERT**
+
+## A. STDARG
+***Concept***    
+The stdarg.h header file in C allows functions to accept a variable number of arguments. It provides macros and a type (va_list) for accessing and manipulating these arguments. 
+
+📝 ***Key Features of stdarg.h***  
+**va_list**: A type that represents a list of arguments.  
+**va_start(ap, last_named_arg)**: Initializes a va_list object to point to the first unnamed argument after last_named_arg.   
+**va_arg(ap, type)**: Retrieves the next argument from the va_list and converts it to the specified type.   
+**va_end(ap)**: Cleans up the va_list object.
+
+***Example***  
+
+    #include <stdio.h>  
+    #include <stdarg.h>               
+    /* print all args one at a time until a negative argument is seen;
+    all args are assumed to be of int type */
+
+    void printargs(int arg1, ...)  
+    {  
+        va_list ap;  
+        int i;
+        va_start(ap, arg1);   
+        for (i = arg1; i >= 0; i = va_arg(ap, int))  
+        printf("%d ", i);  
+        va_end(ap);  
+        putchar('\n');  
+    }
+
+    int main(void)  
+    {  
+        printargs(5, 2, 14, 84, 97, 15, -1, 48, -1);  
+        printargs(84, 51, -1, 3);  
+        printargs(-1);  
+        printargs(1, -1);  
+        return 0;  
+    }
+
+**Output**
+
+    5 2 14 84 97 15  
+    84 51
+
+    1
+
+
+## A. ASSERT
+***Concept***  
+- Asserts are used in programs if the developer wishes to assert or make assumptions.  
+- It takes an expression for the parameter in the function. The parameter is evaluated.   
+- If the value returned after evaluation of the expression is 0 or FALSE, it returns the expression along with the file name and line of execution as an error.  
+- If the errors occur, the program calls the abort() function. The assert function does not do anything if the expression is evaluated TRUE.
+
+***Syntax***  
+
+        void assert( int expression);  
         
+***Example***  
+
+    #include <assert.h>
+    #include <stdio.h>
+    int main()
+    {
+        int a;
+        char str[50];
+            
+        printf("Nhap mot gia tri nguyen: \n");
+        scanf("%d", &a);
+        assert(a >= 10);
+        printf("Gia tri nguyen vua nhap la %d\n", a);
+            
+        printf("Nhap mot chuoi: ");
+        scanf("%s", &str);
+        assert(str != NULL);
+        printf("Chuoi vua nhap la: %s\n", str);
+            
+        return(0);
+    }
+
+    
+**Output**
+
+![alt text](assets/out%20put.png)
