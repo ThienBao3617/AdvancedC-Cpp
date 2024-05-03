@@ -25,3 +25,6 @@ https://docs.google.com/presentation/d/1gIkSOpN9eyfSiYzR7r4u38F8IAY9shXsIfiRSHrl
 
 Lesson 9: JSON   
 https://docs.google.com/presentation/d/1SkldoAr55T358UnTCT352EVwkzJ0f_aFdNs0tBzIjzI/edit?usp=sharing
+
+Lesson 10: Linked List  
+https://docs.google.com/presentation/d/1VxBJQt9WUg9UqE9vgJjWrt8t0n3yIs7_LxiibUt77GI/edit?usp=sharing
