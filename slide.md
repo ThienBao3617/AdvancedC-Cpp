@@ -19,3 +19,9 @@ https://docs.google.com/presentation/d/1epwryNe1xrrjueDalGWJxwThleugfi49QbHg4tsH
 
 Lesson 7: Bitmask      
 https://docs.google.com/presentation/d/1UefvipMD0YtiYfuCK7RSIYNJTY2F3C2fWZmbeqOHmyY/edit?usp=sharing
+
+Lesson 8: Struct - Union     
+https://docs.google.com/presentation/d/1gIkSOpN9eyfSiYzR7r4u38F8IAY9shXsIfiRSHrl85o/edit?usp=sharing
+
+Lesson 9: JSON   
+https://docs.google.com/presentation/d/1SkldoAr55T358UnTCT352EVwkzJ0f_aFdNs0tBzIjzI/edit?usp=sharing
