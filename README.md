@@ -510,6 +510,219 @@ Pointer to Pointer is a data type in a programming language that allows you to s
     }
 
 
+# **LESSON 4: EXTERN - STATIC - VOLATILE - REGISTER**
+## A. Extern 
+The extern variable extends the scope of the variable in multiple source code files.
+
+func.h
+
+    #ifndef FUNC_H  
+    #define FUNC_H  
+    #include <stdio.h>  
+    void func_count();  
+    #endif /* FUNC_H */  
+
+func.c  
+
+    #include "func.h"  
+    extern int count;  
+    void func_count()
+    {  
+        while(count < 10)
+        {  
+            printf("%s: count = %d \n", __FUNCTION__, count) ;  
+            count++;  
+        }  
+    }  
+
+main.c  
+
+    #include <stdio.h>  
+    #include "func.h"  
+    int count = 5; /* global variable */  
+    int main()  
+    {  
+        while(count--)  
+    {  
+        printf("%s: count = %d \n", __FUNCTION__, count);  
+    }  
+    func_count();  
+    return 0;  
+    }  
+
+Trong ví dụ, biến count được khai báo trong file main.c và được extern trong file func.c
+
+    $ gcc func.c main.c   
+    $ ./a.out   
+    main: count = 4   
+    main: count = 3   
+    main: count = 2   
+    main: count = 1   
+    main: count = 0   
+    func_count: count = -1   
+    func_count: count = 0   
+    func_count: count = 1   
+    func_count: count = 2   
+    func_count: count = 3   
+    func_count: count = 4   
+    func_count: count = 5   
+    func_count: count = 6   
+    func_count: count = 7   
+    func_count: count = 8   
+    func_count: count = 9   
+
+
+Kết quả cho thấy count trong func.c cũng chính là count trong main.c được mở rộng ra
+
+Extern cho function: tương tự như ví dụ trên nhưng không có file header func.c để include
+
+func.c
+
+    #include <stdio.h>  
+    static int count = 5;  
+    void func_count()
+    {  
+        while(count < 10)
+        {  
+            printf("%s: count = %d \n", __FUNCTION__, count) ;  
+            count++;  
+        }  
+    }  
+
+main.c
+
+    #include <stdio.h>  
+    extern void func_count();  
+    int main()  
+    {  
+        int count = 5;  
+            while(count--)  
+            {  
+                printf("%s: count = %d \n", __FUNCTION__, count);  
+            }  
+        func_count();  
+    return 0;  
+    }  
+
+Compile & Execute, this is the output:  
+
+    $ gcc func.c main.c   
+    $ ./a.out   
+    main: count = 4   
+    main: count = 3   
+    main: count = 2   
+    main: count = 1   
+    main: count = 0   
+    func_count: count = 5   
+    func_count: count = 6   
+    func_count: count = 7   
+    func_count: count = 8   
+    func_count: count = 9   
+
+## B. Static  
+Static variables have two uses, to limit the scope of the variable within a source code file and to maintain the value of a local variable when exiting a function.
+
+***Cách 1: Giới hạn phạm vi của biến trong phạm vi một file source code***  
+Ví dụ một project có các file source sau:
+
+func.h  
+
+    #ifndef FUNC_H  
+    #define FUNC_H  
+    #include <stdio.h>  
+    void func_count();  
+    #endif /* FUNC_H */  
+
+func.c  
+
+    #include "func.h"  
+    static int count = 5; /* global variable */  
+    void func_count()
+    {  
+        while(count < 10)
+        {  
+            printf("%s: count = %d \n", __FUNCTION__, count) ;  
+            count++;  
+        }  
+    }  
+
+main.c  
+
+    #include <stdio.h>  
+    #include "func.h"  
+    static int count = 5; /* global variable */  
+    int main()  
+    {  
+        while(count--)  
+        {  
+            printf("%s: count = %d \n", __FUNCTION__, count);  
+        }  
+    func_count();  
+    return 0;  
+    }  
+
+trong ví dụ trên có hai biến global là count được khai báo ở hai file source là func.c và main.c
+vì được khai báo là static nên mặc dù cùng tên nhưng chúng hoàn toàn là hai biến khác nhau.
+
+    $ gcc func.c main.c   
+    $ ./a.out   
+    main: count = 4   
+    main: count = 3   
+    main: count = 2   
+    main: count = 1   
+    main: count = 0   
+    func_count: count = 5   
+    func_count: count = 6   
+    func_count: count = 7   
+    func_count: count = 8   
+    func_count: count = 9   
+
+Nếu không không khai báo là static thì khi compile sẽ bị lỗi multiple definition
+
+    $ gcc func.c main.c   
+    /tmp/ccm9bYEF.o:(.data+0x0): multiple definition of `count'  
+    /tmp/cc9uDZlE.o:(.data+0x0): first defined here  
+    collect2: error: ld returned 1 exit status  
+
+***Cách 2: Duy trì giá trị của biến local khi đã thực thi xong hàm
+Chú ý khi khai báo biến static thì phải có giá trị khởi tạo ban đầu.***
+
+main2.c  
+
+    #include <stdio.h>  
+    /* function declaration */  
+    void func(void);  
+    main()  
+    {  
+        int count = 5;  
+        while(count--)  
+        {  
+            func();  
+        }  
+        return 0;  
+    }  
+    /* function definition */  
+    void func( void )  
+    {  
+        static int i = 5; /* local static variable, must set initial value, is 5 */  
+        int k = 5; /* local variable */  
+        printf("i = %d, k = %d \n", i, k);  
+        i++;  
+        k++;  
+    }  
+
+Trong hàm void func(void) có biến local i được khai báo static, trong khi đó k là biến local thường.
+
+    $ gcc main2.c   
+    $ ./a.out   
+    i = 5, k = 5   
+    i = 6, k = 5   
+    i = 7, k = 5   
+    i = 8, k = 5   
+    i = 9, k = 5   
+
+Kết quả biến i vẫn lưu được giá trị sau mỗi lần gọi hàm.
+
 # **LESSON 10: LINKED LIST**
 ## A. Introduction
 ***Compare Linked list with Array?***  
