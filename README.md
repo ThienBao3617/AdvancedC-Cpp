@@ -550,7 +550,7 @@ main.c
     return 0;  
     }  
 
-Trong ví dụ, biến count được khai báo trong file main.c và được extern trong file func.c
+In the example, the variable count is declared in the main.c file and is extern in the func.c file.
 
     $ gcc func.c main.c   
     $ ./a.out   
@@ -572,9 +572,9 @@ Trong ví dụ, biến count được khai báo trong file main.c và được e
     func_count: count = 9   
 
 
-Kết quả cho thấy count trong func.c cũng chính là count trong main.c được mở rộng ra
+The result shows that count in func.c is also count in main.c being expanded
 
-Extern cho function: tương tự như ví dụ trên nhưng không có file header func.c để include
+Extern for functions: similar to the example above but without the func.c header file to include
 
 func.c
 
@@ -622,8 +622,9 @@ Compile & Execute, this is the output:
 ## B. Static  
 Static variables have two uses, to limit the scope of the variable within a source code file and to maintain the value of a local variable when exiting a function.
 
-***Cách 1: Giới hạn phạm vi của biến trong phạm vi một file source code***  
-Ví dụ một project có các file source sau:
+***Method 1: Limit the scope of variables within a file source code
+For example, a project has multiple source files***  
+For example, a project has multiple source files.
 
 func.h  
 
@@ -661,8 +662,9 @@ main.c
     return 0;  
     }  
 
-trong ví dụ trên có hai biến global là count được khai báo ở hai file source là func.c và main.c
-vì được khai báo là static nên mặc dù cùng tên nhưng chúng hoàn toàn là hai biến khác nhau.
+In the example above, there are two global variables count declared in two source files, func.c and main.c  
+
+Being declared as static, even though they have the same name, they are totally different variables.
 
     $ gcc func.c main.c   
     $ ./a.out   
@@ -677,15 +679,14 @@ vì được khai báo là static nên mặc dù cùng tên nhưng chúng hoàn 
     func_count: count = 8   
     func_count: count = 9   
 
-Nếu không không khai báo là static thì khi compile sẽ bị lỗi multiple definition
+If not declared static, there will be a multiple-definition error during compilation.
 
     $ gcc func.c main.c   
     /tmp/ccm9bYEF.o:(.data+0x0): multiple definition of `count'  
     /tmp/cc9uDZlE.o:(.data+0x0): first defined here  
     collect2: error: ld returned 1 exit status  
 
-***Cách 2: Duy trì giá trị của biến local khi đã thực thi xong hàm
-Chú ý khi khai báo biến static thì phải có giá trị khởi tạo ban đầu.***
+***Method 2: Maintain the value of a local variable after the function has been executed. Note that when declaring a static variable, it must have an initial value.***
 
 main2.c  
 
@@ -711,7 +712,7 @@ main2.c
         k++;  
     }  
 
-Trong hàm void func(void) có biến local i được khai báo static, trong khi đó k là biến local thường.
+In the void func(void) function, the local variable i is declared static, while 'k' is a regular local variable.
 
     $ gcc main2.c   
     $ ./a.out   
@@ -721,7 +722,71 @@ Trong hàm void func(void) có biến local i được khai báo static, trong k
     i = 8, k = 5   
     i = 9, k = 5   
 
-Kết quả biến i vẫn lưu được giá trị sau mỗi lần gọi hàm.
+The variable 'i' still retains its value after each function call.
+
+## C. Volatile  
+When a variable is declared with the volatile keyword, the compiler will not optimize it, volatile variables are typically used in interrupt functions and multi-threaded environments.
+
+Example about optimize:  
+
+    int count;  
+    count = 1;   
+    count = 2;   
+    count = 3;  
+
+then the compiler will optimize it into the following form after compilation: 
+
+    count = 3;  
+
+If count is declared as volatile  
+
+    volatile int count;  
+    count = 1;   
+    count = 2;   
+    count = 3; 
+
+ when compiling, the compiler still maintains the operations when executing the program
+ 
+    count = 1;   
+    count = 2;   
+    count = 3; 
+
+In summary, when you want a variable to execute all operations on it without being optimized, use it with the volatile type
+
+## D. Register
+Register type is used to declare local variables located on the CPU registers instead of RAM, aiming to speed up operations with that variable, thus it is used with variables accessed many times such as counter for example.  
+
+    register int miles;  
+
+![alt text](assets/register.png)
+
+**Example:**
+
+    #include <stdio.h>
+    #include <time.h>
+        
+    int main() 
+    {
+        // Save the start time
+        clock_t start_time = clock();
+        int i;
+        
+        // code segment
+        for (i = 0; i < 2000000; ++i)
+        {
+            // ToDo specific tasks
+        }
+        
+        // Save the end time
+        clock_t end_time = clock();
+        
+        // Calculate the running time by milisecond
+        double time_taken = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
+        
+        printf("The running time of the program: %f giay\n", time_taken);
+        
+        return 0;
+    }
 
 # **LESSON 10: LINKED LIST**
 ## A. Introduction
