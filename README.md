@@ -554,7 +554,7 @@ The size in command line reports the sizes (in bytes) of the text, data, and bss
     //text       data        bss        dec        hex    filename
     //960        248         12       1220        4c4    memory-layout
 
-**3. Let us add one static variable which is also stored in bss.**
+**3. Let add one static variable which is also stored in bss.**
 
     #include <stdio.h>
     
@@ -569,7 +569,7 @@ The size in command line reports the sizes (in bytes) of the text, data, and bss
     //text       data        bss        dec        hex    filename
     //960        248         16       1224        4c8    memory-layout
 
-**4. Let us initialize the static variable which will then be stored in the Data Segment.**
+**4. Let initialize the static variable which will then be stored in the Data Segment.**
 
     #include <stdio.h>
     
@@ -584,7 +584,7 @@ The size in command line reports the sizes (in bytes) of the text, data, and bss
     //text       data        bss        dec        hex    filename
     //960         252         12       1224        4c8    memory-layout
 
-**5. Let us initialize the global variable which will then be stored in the Data Segment.**
+**5. Let initialize the global variable which will then be stored in the Data Segment.**
 
     #include <stdio.h>
     
