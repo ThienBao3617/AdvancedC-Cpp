@@ -524,6 +524,80 @@ malloc, calloc in C, or use new in C++)
 **Comments: the BSS and Data area TEXT areas have a fixed magnitude during the operation of the program.   
 The HEAP and STACK areas are variable in size–>can scale during program operation.**
 
+![alt text](assets/layout.png)
+
+## B. Examples
+The size in command line reports the sizes (in bytes) of the text, data, and bss segments.  s
+**1. Check the following simple C program**
+
+    #include <stdio.h>
+
+    int main(void)
+    {
+        return 0;
+    }
+    //terminal:
+    //text       data        bss        dec        hex    filename
+    //960        248          8       1216        4c0    memory-layout
+
+**2. Let add one global variable in the program, now check the size of bss**
+
+    #include <stdio.h>
+
+    int global; /* Uninitialized variable stored in bss*/
+
+    int main(void)
+    {
+        return 0;
+    }
+    //terminal:
+    //text       data        bss        dec        hex    filename
+    //960        248         12       1220        4c4    memory-layout
+
+**3. Let us add one static variable which is also stored in bss.**
+
+    #include <stdio.h>
+    
+    int global; /* Uninitialized variable stored in bss*/
+    
+    int main(void)
+    {
+        static int i; /* Uninitialized static variable stored in bss */
+        return 0;
+    }
+    //terminal
+    //text       data        bss        dec        hex    filename
+    //960        248         16       1224        4c8    memory-layout
+
+**4. Let us initialize the static variable which will then be stored in the Data Segment.**
+
+    #include <stdio.h>
+    
+    int global; /* Uninitialized variable stored in bss*/
+    
+    int main(void)
+    {
+        static int i = 100; /* Initialized static variable stored in DS*/
+        return 0;
+    }
+    //terminal
+    //text       data        bss        dec        hex    filename
+    //960         252         12       1224        4c8    memory-layout
+
+**5. Let us initialize the global variable which will then be stored in the Data Segment.**
+
+    #include <stdio.h>
+    
+    int global = 10; /* initialized global variable stored in DS*/
+    
+    int main(void)
+    {
+        static int i = 100; /* Initialized static variable stored in DS*/
+        return 0;
+    }
+    //terminal
+    //text       data        bss        dec        hex    filename
+    //960         256          8       1224        4c8    memory-layout
 
 # **LESSON 5: EXTERN - STATIC - VOLATILE - REGISTER**
 ## A. Extern 
