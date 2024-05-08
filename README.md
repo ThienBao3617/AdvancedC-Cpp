@@ -509,8 +509,23 @@ Pointer to Pointer is a data type in a programming language that allows you to s
         return 0;
     }
 
+# **LESSON 4: MEMORY LAYOUT**
+## A. Introduction and Concept
+Program memory is divided into 5 main parts: ( order from address
+low to high address):
++ Text: Code area and constants. The Text memory area is governed by the operating system, other agents cannot directly interfere with this partition (read only)
++ BSS: Provincial allocation area, including variables: declared in static, global variable but not initialized value.
++ Data: like memory.BSS, but it is used to store variables
+There is initialization of the initial value.
++ HEAP: Dynamic allocation area. Used to allocate memory through dynamic memory allocation techniques (e.g. using functions
+malloc, calloc in C, or use new in C++)
++ STACK: Stack area. (contains local objects)  
 
-# **LESSON 4: EXTERN - STATIC - VOLATILE - REGISTER**
+**Comments: the BSS and Data area TEXT areas have a fixed magnitude during the operation of the program.   
+The HEAP and STACK areas are variable in size–>can scale during program operation.**
+
+
+# **LESSON 5: EXTERN - STATIC - VOLATILE - REGISTER**
 ## A. Extern 
 The extern variable extends the scope of the variable in multiple source code files.
 
