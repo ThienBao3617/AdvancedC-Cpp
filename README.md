@@ -877,6 +877,146 @@ Register type is used to declare local variables located on the CPU registers in
         return 0;
     }
 
+# **LESSON 6: GOTO - SETJMP.H**
+## A. goto 
+***Concept***  
+In C programming **goto statement** is a jump statement which is sometimes also referred to as an unconditional jump statement. The goto statement can be used to jump from anywhere to anywhere within a function. 
+
+***Syntax***
+
+    Syntax1      |   Syntax2
+    ----------------------------
+    goto label;  |    label:  
+    .            |    .
+    .            |    .
+    .            |    .
+    label:       |    goto label;
+
+- In the above syntax, the first line tells the compiler to go to or jump to the statement marked as a label. 
+- Here, the label is a user-defined identifier that indicates the target statement. The statement immediately followed after ‘label:’ is the destination statement. 
+- The ‘label:’ can also appear before the ‘goto label;’ statement in the above syntax. 
+
+***Flowchart***
+
+![alt text](assets/goto.png)
+
+***Example***
+
+**Type 1:** In this case, we will see a situation similar to as shown in **Syntax 1** above. Suppose we need to write a program where we need to check if a number is even or not and print accordingly using the goto statement.
+
+    #include <stdio.h> 
+
+    void checkEvenOrNot(int num) 
+    { 
+        if (num % 2 == 0) 
+            // jump to even 
+            goto even; 
+        else
+            // jump to odd 
+            goto odd; 
+
+    even: 
+        printf("%d is even", num); 
+        return; 
+    odd: 
+        printf("%d is odd", num);
+        return;
+    } 
+
+    int main() 
+    { 
+        int num = 36; 
+        checkEvenOrNot(num); 
+        return 0; 
+    }
+
+**Output**
+
+    36 is even
+
+**Type 2:** In this case, we will see a situation similar to as shown in **Syntax 2** above. Suppose we need to write a program that prints numbers from 1 to 10 using the goto statement.
+
+    #include <stdio.h> 
+
+    void printNumbers() 
+    { 
+        int n = 1; 
+    label: 
+        printf("%d ", n); 
+        n++; 
+        if (n <= 10) 
+            goto label; 
+    } 
+
+    int main() 
+    { 
+        printNumbers(); 
+        return 0; 
+    }
+
+**Output**
+
+    1 2 3 4 5 6 7 8 9 10
+
+## B. setjmp.h
+***Concept***  
+The **setjmp.h** header defines the macro **setjmp()**, one function **longjmp()**, and one variable type **jmp_buf**, for bypassing the normal function call and return discipline.
+
+***Library Variables***  
+Variable type defined in the header setjmp.h
+
+    Variable : jmp_buf
+
+    Description : This is an array type used for holding information for macro setjmp() and function longjmp()
+
+***Library Macros***  
+There is only one macro defined in this library
+
+    Macro : int setjmp(jmp_buf environment)
+
+    Description : This macro saves the current environment into the variable environment for later use by the function longjmp(). If this macro returns directly from the macro invocation, it returns zero but if it returns from a longjmp() function call, then a non-zero value is returned.
+
+***Library Functions***  
+The only one function defined in the header setjmp.h
+
+    Function : 	void longjmp(jmp_buf environment, int value)
+
+    Description : This function restores the environment saved by the most recent call to setjmp() macro in the same invocation of the program with the corresponding jmp_buf argument.
+
+***Example***
+
+    #include <setjmp.h> 
+    #include <stdio.h> 
+    jmp_buf buf; 
+    void func() 
+    { 
+        printf("Welcome to HALA Academy\n"); 
+
+        // Jump to the point setup by setjmp 
+        longjmp(buf, 1); 
+
+        printf("C/C++ Advanced\n"); 
+    } 
+
+    int main() 
+    { 
+        // Setup jump position using buf and return 0 
+        if (setjmp(buf)) 
+            printf("Embedded Automotive\n"); 
+        else 
+        { 
+            printf("Embedded Interview\n"); 
+            func(); 
+        } 
+        return 0; 
+    }
+
+**Output**
+
+    Embedded Interview
+    Welcome to HALA Academy
+    Embedded Automotive
+
 # **LESSON 10: LINKED LIST**
 ## A. Introduction
 ***Compare Linked list with Array?***  
