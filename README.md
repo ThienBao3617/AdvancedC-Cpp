@@ -1017,6 +1017,127 @@ The only one function defined in the header setjmp.h
     Welcome to HALA Academy
     Embedded Automotive
 
+# **LESSON 7: BITMASKING**
+## A. Introduction
+***What is a Bit?***  
+- A bit is the smallest unit of data which can either store a 0 or 1 inside it.
+- All the data in the computer is stored using these bits.
+- These 2 possible values can also be represented as boolean values that are True or False.
+- Using this we can apply boolean logic to manipulate data stored on the computer.
+
+***What is Bitmasking?***  
+- Bitmasking is a technique that involves bit manipulation.
+- It is basically like putting a mask over certain bits and hiding the other un-useful bits, so as to make the program much more efficient and optimize the memory.
+- A bitmask is a sequence of bits that can also be known as a bitset or bit field and is used to perform bitwise operations on the given data.
+
+***6 bitwise operators in C***
+- & (Bitwise AND Operator)
+- | (Bitwise OR Operator)
+- ^ (Bitwise XOR Operator)
+- ~ (Bitwise NOT Operator)
+- *>>* (Right Shift Operator)
+- << (Left Shift Operator)
+
+## B. Bitmask Techniques
+**1. Reverse a bit by NOT bitwise**  
+Used to perform a bitwise NOT operation on each bit of a number. The result is the reverse bit of that number.
+
+***Syntax***
+
+    number = ~ number
+
+***Example***
+
+    #include <stdio.h> 
+
+    int main() 
+    { 
+
+        int x = 1; 
+
+        printf("Ans: %d", ~x); 
+
+        return 0; 
+    }
+
+***Output***
+
+    Ans: -2
+
+**2. Setting a bit**  
+Basically, we take the integer 1 and using the left shift operator, shift the binary representation of 1 to n places where (n+1) is the place of bit which we want to set. Then using the bitwise OR operator we turn the given number’s (n+1)^th bit to 1.  
+
+***Syntax*** 
+
+    number | (1 << bit_position_to_set)
+
+***Example***
+
+    #include <stdio.h> 
+
+    int main() 
+    { 
+
+        int x = 13; 
+
+        printf("Ans: %d", 13 | (1 << 5)); 
+
+        return 0; 
+    }
+
+***Output***
+
+    Ans: 45
+
+**3. Clearing a Bit**  
+Basically, we again take 1 and shift it the the specified position. Then, we perform the NOT operation on this to convert that into a 0 and other bits of the value (1 << n) to 1. Then we do the AND operation to clear the specified bit and obtain the result.
+
+***Syntax***  
+
+    number & ~(1 << bit_position_to_clear)
+
+***Example***
+
+    #include<stdio.h> 
+    
+    int main() 
+    { 
+        int x = 13; 
+        
+        printf("Ans: %d", 13 & ~(1 << 2) ); 
+        
+        return 0; 
+    }
+
+***Output***
+
+    Ans: 9
+
+**4. Flipping a Bit**  
+In this operation, we flip a specific bit that is if the bit is 0 then turn it to 1 else turn it to 0. This operation requires the use of bitwise XOR (^) operator along with the left shift (<<) operator.
+
+***Syntax***  
+
+    number ^ (1 << bit_position_to_flip)
+
+***Example***
+
+#include<stdio.h> 
+  
+    int main() 
+    { 
+        int x = 13; 
+        
+        printf("Ans: %d", 13 ^ (1 << 3) ); 
+        
+        return 0; 
+    }
+
+***Output***  
+
+    Ans: 5
+
+
 # **LESSON 10: LINKED LIST**
 ## A. Introduction
 ***Compare Linked list with Array?***  
