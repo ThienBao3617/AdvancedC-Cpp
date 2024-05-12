@@ -1485,3 +1485,303 @@ Code sample:
         return retval;
 
     }
+
+# **LESSON 11: STACK - QUEUE**
+## A. Stack
+***What is Stack?***  
+Stack is a linear data structure based on LIFO(Last In First Out) principle in which the insertion of a new element and removal of an existing element takes place at the same end represented as the top of the stack.  
+
+***How to implement Stack?***  
+To implement the stack, it is required to maintain the pointer to the top of the stack , which is the last element to be inserted because we can access the elements only on the top of the stack.
+
+***LIFO(Last In First Out) Principle in Stack:***  
+This strategy states that the element that is inserted last will come out first. You can take a pile of plates kept on top of each other as a real-life example. The plate which we put last is on the top and since we remove the plate that is at the top, we can say that the plate that was put last comes out first.
+
+***Representation of Stack Data Structure:***  
+Stack follows LIFO (Last In First Out) Principle so the element which is pushed last is popped first.
+![alt text](assets/stack.png)
+
+***Basic Operations on Stack:***  
+In order to make manipulations in a stack, there are certain operations provided to us.
+- push() to insert an element into the stack
+- pop() to remove an element from the stack
+- top() Returns the top element of the stack.
+- isEmpty() returns true if stack is empty else false.
+- isFull() returns true if the stack is full else false.
+
+***Push Operation in Stack:***  
+->Adds an item to the stack. If the stack is full, then it is said to be an **Overflow** condition.  
+->**Algorithm** for Push Operation:
+- Before pushing the element to the stack, we check if the stack is full .
+- If the stack is full (top == capacity-1) , then Stack Overflows and we cannot insert the element to the stack.
+- Otherwise, we increment the value of top by 1 (top = top + 1) and the new value is inserted at top position.
+- The elements can be pushed into the stack till we reach the capacity of the stack.
+
+![alt text](assets/push.png)
+
+***Pop Operation in Stack:***  
+->Removes an item from the stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an **Underflow** condition.  
+->**Algorithm** for Pop Operation:
+- Before popping the element from the stack, we check if the stack is empty .
+- If the stack is empty (top == -1), then Stack Underflows and we cannot remove any element from the stack.
+- Otherwise, we store the value at top, decrement the value of top by 1 (top = top – 1) and return the stored top value.
+
+![alt text](assets/pop.png)
+
+***Top or Peak Operation in Stack:***  
+->Returns the top element of the stack.  
+->**Algorithm** for Top Operation:
+- Before returning the top element from the stack, we check if the stack is empty.
+- If the stack is empty (top == -1), we simply print “Stack is empty”.
+- Otherwise, we return the element stored at index = top.
+
+![alt text](assets/top.png)
+
+***isEmpty Operation in Stack:***  
+->Returns true if the stack is empty, else false.  
+->**Algorithm** for isEmpty Operation :
+- Check for the value of top in stack.
+- If (top == -1) , then the stack is empty so return true.
+- Otherwise, the stack is not empty so return false.
+
+![alt text](assets/empty.png)
+
+***isFull Operation in Stack:***  
+->Returns true if the stack is full, else false.  
+->**Algorithm** for isFull Operation:
+- Check for the value of top in stack.
+- If (top == capacity-1), then the stack is full so return true.
+- Otherwise, the stack is not full so return false.
+
+![alt text](assets/full.png)
+
+***Stack Implementation:***  
+In this implementation, the push operation is implemented by incrementing the index of the top element and storing the new element at that index. The pop operation is implemented by returning the value stored at the top index and then decrementing the index of the top element.
+
+    #include <limits.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    struct Stack 
+    {
+        int top;
+        unsigned capacity;
+        int* array;
+    };
+
+    // function to create a stack of given capacity. It initializes size of stack as 0
+    struct Stack* createStack(unsigned capacity)
+    {
+        struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
+        stack->capacity = capacity;
+        stack->top = -1;
+        stack->array = (int*)malloc(stack->capacity * sizeof(int));
+        return stack;
+    }
+
+    // Stack is full when top is equal to the last index
+    int isFull(struct Stack* stack)
+    {
+        return stack->top == stack->capacity - 1;
+    }
+
+    // Stack is empty when top is equal to -1
+    int isEmpty(struct Stack* stack)
+    {
+        return stack->top == -1;
+    }
+
+    // Function to add an item to stack.  It increases top by 1
+    void push(struct Stack* stack, int item)
+    {
+        if (isFull(stack))
+            return;
+        stack->array[++stack->top] = item;
+        printf("%d pushed to stack\n", item);
+    }
+
+    // Function to remove an item from stack.  It decreases top by 1
+    int pop(struct Stack* stack)
+    {
+        if (isEmpty(stack))
+            return INT_MIN;
+        return stack->array[stack->top--];
+        printf("%d popped to stack\n", item);
+    }
+
+    // Function to return the top from stack without removing it
+    int top(struct Stack* stack)
+    {
+        if (isEmpty(stack))
+            return INT_MIN;
+        return stack->array[stack->top];
+        printf("Top element is : %d\n", item);
+    }
+
+    int main()
+    {
+        struct Stack* stack = createStack(100);
+
+        push(stack, 10);
+        push(stack, 20);
+        push(stack, 30);
+        pop(stack, 30);
+        top(stack);
+
+        return 0;
+    }
+
+***Output:***
+
+    10 pushed into stack
+    20 pushed into stack
+    30 pushed into stack
+    30 popped from stack
+    Top element is : 20
+    Elements present in stack : 20 10 
+
+## B. Queue
+***What is Queue?***  
+- Queue is a linear data structure that is open at both ends and the operations are performed in First In First Out (FIFO) order.
+- We define a queue to be a list in which all additions to the list are made at one end (back of the queue), and all deletions from the list are made at the other end(front of the queue). 
+ - The element which is first pushed into the order, the delete operation is first performed on that. 
+
+***FIFO Principle of Queue:***  
+- A Queue is like a line waiting to purchase tickets, where the first person in line is the first person served. 
+- Position of the entry in a queue ready to be served, that is, the first entry that will be removed from the queue, is called the front of the queue (or head of the queue). 
+- Similarly, the position of the last entry in the queue, that is, the one most recently added, is called the rear (or the tail) of the queue.
+
+![alt text](assets/ticket.png)
+
+***Representation of Queue Data Structure:***  
+
+![alt text](assets/queue.png)
+
+***Basic Operations in Queue:***  
+Some of the basic operations for Queue in Data Structure are:
+- Enqueue: Adds (or stores) an element to the end of the queue..
+- Dequeue: Removal of elements from the queue.
+- Peak or front: Acquires the data element available at the front node of the queue without deleting it.
+- rear or tail: This operation returns the element at the rear end without removing it.
+- isFull: Validates if the queue is full.
+- isEmpty: Checks if the queue is empty.
+
+***Enqueue Operation in Queue:***   
+->Enqueue() operation in Queue **adds (or stores) an element to the end of the queue.**  
+->The following steps should be taken to enqueue (insert) data into a queue:
+
+- Check if the queue is full.
+- If the queue is full, return overflow error and exit.
+- If the queue is not full, increment the rear pointer to point to the next empty space.
+- Add the data element to the queue location, where the rear is pointing.
+- return success.
+
+![alt text](assets/enqueue.png)            ![alt text](assets/enqueue2.png)
+
+***Implementation of Enqueue:***
+
+    // Function to add an item to the queue.
+    // It changes rear and size
+    void enqueue(struct Queue* queue, int item)
+    {
+        if (isFull(queue))
+            return;
+        queue->rear = (queue->rear + 1) % queue->capacity;
+        queue->array[queue->rear] = item;
+        queue->size = queue->size + 1;
+        printf("%d enqueued to queue\n", item);
+    }
+
+***Dequeue Operation in Queue:***   
+->Removes (or access) **the first element from the queue.**  
+->The following steps are taken to perform the dequeue operation:
+
+- Check if the queue is empty.
+- If the queue is empty, return the underflow error and exit.
+- If the queue is not empty, access the data where the front is pointing.
+- Increment the front pointer to point to the next available data element.
+- The Return success.
+
+![alt text](assets/dequeue.png)  ![alt text](assets/dequeue2.png)
+
+***Implementation of dequeue:***
+
+    // Function to remove an item from queue.
+    // It changes front and size
+    int dequeue(struct Queue* queue)
+    {
+        if (isEmpty(queue)) {
+            printf("\nQueue is empty\n");
+            return;
+        }
+        int item = queue->array[queue->front];
+        queue->front = (queue->front + 1) % queue->capacity;
+        queue->size = queue->size - 1;
+        return item;
+    }
+
+***Front Operation in Queue:***
+
+    // Function to get front of queue
+    int front(struct Queue* queue)
+    {
+        if (isempty(queue))
+            return INT_MIN;
+        return queue->arr[queue->front];
+    }
+
+***Rear Operation in Queue:***
+
+    int rear(struct Queue* front)
+    {
+        if (front == NULL) {
+            printf("Queue is empty.\n");
+            return -1;
+        }
+
+        while (front->next != NULL) {
+            front = front->next;
+        }
+
+        return front->data;
+    }
+
+***isEmpty Operation in Queue:***
+
+    // Queue is empty when size is 0
+    bool isEmpty(struct Queue* queue)
+    {
+        return (queue->size == 0);
+    }
+
+***isFull Operation in Queue:***
+
+    // Queue is full when size becomes equal to the capacity
+    bool isFull(struct Queue* queue)
+    {
+        return (queue->size == queue->capacity);
+    }
+
+***Queue Implementation:***
+
+    struct Queue {
+        int front, rear, size;
+        unsigned capacity;
+        int* array;
+    };
+
+    // function to create a queue of given capacity.
+    // It initializes size of queue as 0
+    struct Queue* createQueue(unsigned capacity)
+    {
+        struct Queue* queue = (struct Queue*)malloc(sizeof(struct Queue));
+        queue->capacity = capacity;
+        queue->front = queue->size = 0;
+
+        // This is important, see the enqueue
+        queue->rear = capacity - 1;
+        queue->array = (int*)malloc(queue->capacity * sizeof(int));
+        return queue;
+    }
+
+
