@@ -1238,7 +1238,7 @@ To access the members of a union, you also use the '.' operator with a normal un
 ***Output***  
 
     Ma sinh vien : CNTT1
-    Ho ten : Nguyen Van 28Tech
+    Ho ten : Nguyen Van A
 
 ***Example 2: The size of a union will be the size of its largest attribute***
 
