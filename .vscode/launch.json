@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Github/AdvancedC-Cpp/Goto and setjmp.h",
-      "program": "d:/Github/AdvancedC-Cpp/Goto and setjmp.h/build/Debug/outDebug",
+      "cwd": "d:/Github/AdvancedC-Cpp/Bitmasking/Ex1",
+      "program": "d:/Github/AdvancedC-Cpp/Bitmasking/Ex1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

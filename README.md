@@ -1137,6 +1137,160 @@ In this operation, we flip a specific bit that is if the bit is 0 then turn it t
 
     Ans: 5
 
+# **LESSON 8: STRUCT - UNION**
+## A. Struct
+***What is struct?***  
+Struct or structure is a data type that you define by combining many existing data types for the purpose of describing multiple fields of information of the object you need to store.
+
+***Syntax***  
+
+    struct ten_struct
+    {
+        data_type1 data_field1;
+        data_type2 data_field2;
+        ....
+        data_typen data_fieldn;
+    };
+In a struct, you will list the fields that you need to store for the structure you are building along with the data type of that field.
+
+***Example***  
+
+    #include <stdio.h>
+    #include <string.h>
+
+    struct SinhVien{
+        char hoten[50];
+        char email[50];
+        char lop[30];
+        double gpa;
+    };
+    //Replace struct SinhVien = SinhVien
+    typedef struct SinhVien SinhVien;
+
+    int main(){
+        SinhVien s; // struct SinhVien cung duoc
+        strcpy(s.hoten, "Nguyen Van A");
+        strcpy(s.email, "abcd@gmail.com");
+        strcpy(s.lop, "CNTT");
+        s.gpa = 2.1;
+        printf("Thong tin sinh vien : \n");
+        printf("Ho ten : %s\n", s.hoten);
+        printf("Email : %s\n", s.email);
+        printf("Lop : %s\n", s.lop);
+        printf("Diem gpa : %.2lf\n", s.gpa);
+        return 0;
+    }
+
+***Output***
+
+    Thong tin sinh vien : 
+    Ho ten : Nguyen Van A
+    Email : abcd@gmail.com
+    Lop : CNTT
+    Diem gpa : 2.10
+
+- After building the structure, you can use it as a regular data type and declare variables belonging to this structure type.
+- Note that in C structure declaration, you need to add the keyword 'struct' in front. If you do not want to declare the 'struct' keyword every time you use the structure, you can use typedef to redefine the type for the structure.
+- To access the data fields of the structure, you use the '.' (dot operator).
+
+## B. Union
+***What is union?***
+- Union is also a data type that users define themselves, similar to struct, union also has data members to describe information of the object you want to store.
+- However, the difference with struct is that while its members can store values simultaneously at the same time, union, on the other hand, at each moment, you only have one attribute of union storing some value.
+- All members of the union will share the same memory space.
+
+***Syntax***
+
+    union union_name
+    {
+        data_type1 member1;
+        data_type2 member2;
+        data_type3 member3;
+        ....
+        data_typeN memberN;
+    };
+To access the members of a union, you also use the '.' operator with a normal union variable or the '->' operator with a union pointer.
+
+***Example 1: The attributes of a union will have the same value at the same time***
+
+    #include <stdio.h>
+    #include <string.h>
+
+    union SinhVien
+    {
+        char masv[20];
+        char hoten[50];
+        double gpa;
+    };
+
+    typedef union SinhVien SinhVien;
+
+    int main()
+    {
+        SinhVien s;
+        strcpy(s.masv, "CNTT1");
+        strcpy(s.hoten, "Nguyen Van A");
+        printf("Ma sinh vien : %s\n", s.masv);
+        printf("Ho ten : %s\n", s.hoten);
+        return 0;
+    }
+
+***Output***  
+
+    Ma sinh vien : CNTT1
+    Ho ten : Nguyen Van 28Tech
+
+***Example 2: The size of a union will be the size of its largest attribute***
+
+    #include <stdio.h>
+    #include <string.h>
+
+    union Example1
+    {
+        char kitu;
+        double sothuc;
+        int songuyen;
+    };
+
+    typedef union Example1 Example1;
+
+    union Example2
+    {
+        char x[20];
+        char y[10];
+        int n;
+    };
+
+    typedef union Example2 Example2;
+
+    int main()
+    {
+        printf("%d\n%d\n", sizeof(Example1), sizeof(Example2));
+        return 0;
+    }
+
+***Output***  
+
+    8
+    20
+
+## C. The difference between union and struct
+Union and Struct have similarities including:
+
+- Both are user-defined data types to serve practical problems
+- Have component properties
+- Access properties through the '.' operator or '->' for pointer type variables
+
+The differences between the two user-defined data types are listed below:  
+**struct**
+- The size of a struct is usually larger than or equal to the sum of all sizes of its component attributes.
+- A struct can simultaneously store multiple values for its component attributes at the same time.
+- Declared with the keyword struct.
+
+**union**  
+- The size of a union is equal to the size of its largest attribute.
+- Only one component attribute of a union can store a value at a time.
+- Declared with the keyword union.
 
 # **LESSON 10: LINKED LIST**
 ## A. Introduction
