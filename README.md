@@ -1787,4 +1787,228 @@ Some of the basic operations for Queue in Data Structure are:
         return queue;
     }
 
+# **LESSON 12: SEARCHING & SORTING ALGORITHM - FILE OPERATIONS**
+## A. Binary search
+***Concept***  
+**Binary Search Algorithm** is a **searching algorithm** used in a sorted array by repeatedly dividing the search interval in half. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to **O(log N)**.
 
+***Conditions to apply Binary Search Algorithm in a Data Structure***  
+To apply Binary Search algorithm:
+- The data structure must be sorted.
+- Access to any element of the data structure takes constant time.
+
+***Idea of Binary Search Algorithm***  
+In this algorithm:
+- Divide the search space into two halves by **finding the middle index “mid”**. 
+- Finding the middle index “mid” in Binary Search Algorithm.
+- Compare the middle element of the search space with the key. 
+- If the key is found at middle element, the process is terminated.
+- If the key is not found at middle element, choose which half will be used as the next search space.  
+--->If the key is smaller than the middle element, then the left side is used for next search.  
+--->If the key is larger than the middle element, then the right side is used for next search.
+- This process is continued until the key is found or the total search space is exhausted.
+
+![alt text](assets/mid.png)
+
+***How does Binary Search Algorithm work?***  
+To understand the working of binary search, consider the following illustration:  
+->Consider an array arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}, and the target = 23.  
+->**First Step:** Calculate the mid and compare the mid element with the key. If the key is less than mid element, move to left and if it is greater than the mid then move search space to the right.
+- Key (number 23) is greater than current mid element (number 16). The search space moves to the right.
+
+![alt text](assets/BS1.png)
+- Key is less than the current mid 56. The search space moves to the left.  
+
+![alt text](assets/BS2.png)  
+->**Second Step:** If the key matches the value of the mid element, the element is found and stop search.
+
+![alt text](assets/BS3.png)
+
+***Implementation of Recursive Binary Search Algorithm:***
+
+    #include <stdio.h>
+
+    int binarySearch(int arr[], int low, int high, int x)
+    {
+        if (high >= low) 
+        {
+            int mid = low + (high - low) / 2;
+
+            // If the element is present at the middle itself
+            if (arr[mid] == x)
+                return mid;
+
+            // If element is smaller than mid, then it can only be present in left subarray
+            if (arr[mid] > x)
+                return binarySearch(arr, low, mid - 1, x);
+
+            // Else the element can only be present in right subarray
+            return binarySearch(arr, mid + 1, high, x);
+        }
+        return -1;
+    }
+
+    int main()
+    {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int n = sizeof(arr) / sizeof(arr[0]);
+        int x = 10;
+        int result = binarySearch(arr, 0, n - 1, x);
+        if (result == -1)
+            printf("Element is not present in array")
+        else
+            printf("Element is present at index %d", result);
+        return 0;
+    }
+
+***Output***
+
+    Element is present at index 3
+
+## B. Bubble sort
+***Concept***  
+**Bubble Sort** is the simplest **sorting algorithm** that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.
+
+***Idea of Bubble Sort Algorithm***  
+In Bubble Sort algorithm:
+- Traverse from left and compare adjacent elements and the higher one is placed at right side. 
+- In this way, the largest element is moved to the rightmost end at first. 
+- This process is then continued to find the second largest and place it and so on until the data is sorted.
+
+***How does Bubble Sort Work?***  
+Let us understand the working of bubble sort with the help of the following illustration:  
+->Input: arr[] = {6, 0, 3, 5}  
+->**First Pass:** 
+- The largest element is placed in its correct position, example, the end of the array.
+
+![alt text](assets/BSort1.png)  
+
+->**Second Pass:** 
+- Place the second largest element at correct position
+
+![alt text](assets/BS2.png)
+
+->**Third Pass:**
+- Place the remaining two elements at their correct positions.
+
+![alt text](assets/BS3.png)
+
+***Implementation of Bubble Sort***  
+
+    #include <stdbool.h>
+    #include <stdio.h>
+
+    void swap(int* xp, int* yp)
+    {
+        int temp = *xp;
+        *xp = *yp;
+        *yp = temp;
+    }
+
+    void bubbleSort(int arr[], int n)
+    {
+        int i, j;
+        bool swapped;
+        for (i = 0; i < n - 1; i++) 
+        {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) 
+            {
+                if (arr[j] > arr[j + 1]) 
+                {
+                    swap(&arr[j], &arr[j + 1]);
+                    swapped = true;
+                }
+            }
+
+            // If no two elements were swapped by inner loop, then break
+            if (swapped == false)
+                break;
+        }
+    }
+
+    // Function to print an array
+    void printArray(int arr[], int size)
+    {
+        int i;
+        for (i = 0; i < size; i++)
+            printf("%d ", arr[i]);
+    }
+
+    int main()
+    {
+        int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+        int n = sizeof(arr) / sizeof(arr[0]);
+        bubbleSort(arr, n);
+        printf("Sorted array: \n");
+        printArray(arr, n);
+        return 0;
+    }
+
+## C. File operations
+***Concept***  
+- File handing in C is the process in which we create, open, read, write, and close operations on a file.
+- C language provides different functions such as fopen(), fwrite(), fread(), fseek(), fprintf(),... to perform input, output, and many different C file operations in our program.
+
+***C File Operations***  
+- Creating a new file – **fopen()** with attributes as “a” or “a+” or “w” or “w+”
+- Opening an existing file – **fopen()**
+- Reading from file – **fscanf() or fgets()**
+- Writing to a file – **fprintf() or fputs()**
+- Moving to a specific location in a file – **fseek(), rewind()**
+- Closing a file – **fclose()**
+
+***File Pointer in C***  
+A file pointer is a reference to a particular position in the opened file. It is used in file handling to perform all file operations such as read, write, close, etc. We use the FILE macro to declare the file pointer variable. The FILE macro is defined inside **<stdio.h>** header file.
+
+***Syntax***  
+
+    FILE* pointer_name;
+
+File Pointer is used in almost all the file operations in C.
+
+***Open a File in C***  
+For opening a file in C, the fopen() function is used with the filename or file path along with the required access modes.
+
+***Syntax***
+
+    FILE* fopen(const char *file_name, const char *access_mode);
+
+***Parameters***
+- file_name: name of the file when present in the same directory as the source file. Otherwise, full path.
+- access_mode: Specifies for what operation the file is being opened.
+
+***Return Value***
+- If the file is opened successfully, returns a file pointer to it.
+- If the file is not opened, then returns NULL.
+
+***Example***
+
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main()
+    {
+        // file pointer variable to store the value returned by fopen
+        FILE* fptr;
+
+        // opening the file in read mode
+        fptr = fopen("filename.txt", "r");
+
+        // checking if the file is opened successfully
+        if (fptr == NULL) 
+        {
+            printf("The file is not opened. The program will now exit.");
+            exit(0);
+        }
+
+        return 0;
+    }
+
+***Output***
+
+    The file is not opened. The program will now exit.
+The file is not opened because it does not exist in the source directory.
+
+**PLEASE READ ABOUT FILE OPERATIONS AND EXAMPLES TO UNDERSTAND MORE IN THIS LINK BELOW**
+https://www.geeksforgeeks.org/basics-file-handling-c/
