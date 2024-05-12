@@ -25,31 +25,34 @@ So MACRO is a word used to refer to the information processed in the preprocesso
     - Conditional compilation directives: #if, #elif, #else, #ifdef, #ifndef   
 
 ***Example 1:***   
-#if condition_1   
-TODO 1;  
-#elif condition_1   
-TODO 2;   
-#else   
-TODO 3;   
-#endif  
-***=>explaination***: If "condition_1" is true, then TODO 1 is built. If condition_2 is true, then TODO 2 is selected to build. If conditions_1 and 2 are both false, then TODO 3 is selected for build.
+
+    #if condition_1   
+    TODO 1;  
+    #elif condition_1   
+    TODO 2;   
+    #else   
+    TODO 3;   
+    #endif  
+**=>explaination**: If "condition_1" is true, then TODO 1 is built. If condition_2 is true, then TODO 2 is selected to build. If conditions_1 and 2 are both false, then TODO 3 is selected for build.
 
 
 ***Example 2:***    
-#ifdef macro  
-TODO 1;   
-#else  
-TODO 2;   
-#endif   
-***=>explaination***: If the macro is already defined by #define macro, then TODO 1 is selected to build. If not defined, TODO 2 is selected to build.
+
+    #ifdef macro  
+    TODO 1;   
+    #else  
+    TODO 2;   
+    #endif   
+**=>explaination**: If the macro is already defined by #define macro, then TODO 1 is selected to build. If not defined, TODO 2 is selected to build.
 
 ***Example 3:***   
-#ifndef macro  
-TODO 1;   
-#else  
-TODO 2;   
-#endif   
-***=>explaination***: In the opposite way compare to #ifdef. If the macro is not defined, then TODO 1 is selected to build. If already defined, TODO 2 is selected to build.
+
+    #ifndef macro  
+    TODO 1;   
+    #else  
+    TODO 2;   
+    #endif   
+**=>explaination**: In the opposite way compare to #ifdef. If the macro is not defined, then TODO 1 is selected to build. If already defined, TODO 2 is selected to build.
 
 ***Code example:***   
 
