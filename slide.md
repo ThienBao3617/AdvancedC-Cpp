@@ -34,3 +34,6 @@ https://docs.google.com/presentation/d/1UoP83N78YvBCe7uMurYGXMdgVh2l4rG0qnhGwvJm
 
 Lesson 12: Searching & Sorting Algorithm - File Operations  
 https://docs.google.com/presentation/d/1tQBZ-HsYGAr4XOLYsSdk872eIDVV3sUTe6weiIRdskA/edit?usp=sharing
+
+Lesson 13: Class  
+https://docs.google.com/presentation/d/1QV4bUPIX-76SSI0cjWVFMUTwVALlcgnKDhKFvO1vDBo/edit#slide=id.g2656c7404cb_0_0
