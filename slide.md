@@ -37,3 +37,6 @@ https://docs.google.com/presentation/d/1tQBZ-HsYGAr4XOLYsSdk872eIDVV3sUTe6weiIRd
 
 Lesson 13: Class  
 https://docs.google.com/presentation/d/1QV4bUPIX-76SSI0cjWVFMUTwVALlcgnKDhKFvO1vDBo/edit#slide=id.g2656c7404cb_0_0
+
+Lesson 14: OOP  
+https://docs.google.com/presentation/d/1Qh394PWoN-GY2FCUTni-jHXE9NO4TO6RbW30xiRrOzk/edit?usp=sharing
