@@ -35,8 +35,26 @@ https://docs.google.com/presentation/d/1UoP83N78YvBCe7uMurYGXMdgVh2l4rG0qnhGwvJm
 Lesson 12: Searching & Sorting Algorithm - File Operations  
 https://docs.google.com/presentation/d/1tQBZ-HsYGAr4XOLYsSdk872eIDVV3sUTe6weiIRdskA/edit?usp=sharing
 
-Lesson 13: Class  
+Lesson 13: C Project  
+https://docs.google.com/presentation/d/1tLxcWXuqK8XznVTOYlo4fIlR3AlVL5e7WKsN87oJ4u0/edit?usp=sharing
+
+Lesson 14: Class  
 https://docs.google.com/presentation/d/1QV4bUPIX-76SSI0cjWVFMUTwVALlcgnKDhKFvO1vDBo/edit#slide=id.g2656c7404cb_0_0
 
-Lesson 14: OOP  
+Lesson 15: OOP  
 https://docs.google.com/presentation/d/1Qh394PWoN-GY2FCUTni-jHXE9NO4TO6RbW30xiRrOzk/edit?usp=sharing
+
+Lesson 16: STL   
+https://docs.google.com/presentation/d/1tAOZCf-cb28spb-LhswbwH1Vk39ZR-tazPhvVzqj2P4/edit?usp=sharing
+
+Lesson 17: Generic Programming  
+https://docs.google.com/presentation/d/1aR-B9TufMyuQZY8ivHZoUpvy0l-HkwXd4I0ZZV8yXE8/edit?usp=sharing
+
+Lesson 18: Smart Pointer Lamda
+https://docs.google.com/presentation/d/1B9iMPLqZ2U0OITUFsZ0Wxq6xzCVdUcnruPUYMxLLu6Q/edit?usp=sharing
+
+Lesson 19: OOP Project  
+https://docs.google.com/presentation/d/1EaX9KoSMOxsm0eW6sey0JVqRIrxGNGJrJ2ZFO_xeblw/edit?usp=sharing
+
+Lesson 20: OOP2  
+https://docs.google.com/presentation/d/1UKhNoLblHNoy3PHfKk7ZFKADzA2XFRU4V3KQyewSlKw/edit?usp=sharing
