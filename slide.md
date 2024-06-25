@@ -56,7 +56,7 @@ https://docs.google.com/presentation/d/1B9iMPLqZ2U0OITUFsZ0Wxq6xzCVdUcnruPUYMxLL
 Lesson 19: OOP1 Project  
 https://docs.google.com/presentation/d/1EaX9KoSMOxsm0eW6sey0JVqRIrxGNGJrJ2ZFO_xeblw/edit?usp=sharing
 
-Lesson 20: OOP2 Project 
+Lesson 20: OOP2 Project   
 https://docs.google.com/presentation/d/1UKhNoLblHNoy3PHfKk7ZFKADzA2XFRU4V3KQyewSlKw/edit?usp=sharing
 
 Lesson 21: OOP3 project   
