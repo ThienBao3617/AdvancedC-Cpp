@@ -7,7 +7,6 @@ https://docs.google.com/presentation/d/1J_1WBhX0t90ZXbCCqV5FlcMJYp1f9qxOOjPv-7F-
 Lesson 3: Pointer        
 https://docs.google.com/presentation/d/1-1vL1ydB0zsysqY9YN1_aem6FCAZWJNLrBjo3ggTw9E/edit#slide=id.g2a3daafaf43_0_22
 
-
 Lesson 4: Memory Layout                        
 https://docs.google.com/presentation/d/1gckJCpVSA6z-ozdJCll69fcJBjdYxNCVF8bsSv0JMmc/edit?usp=sharing
 
