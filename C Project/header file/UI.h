@@ -1,9 +1,9 @@
-#ifndef __GUI_H_
-#define __GUI_H_
+#ifndef __UI_H_
+#define __UI_H_
 
-#include "structure.h"
+#include "data.h"
 
 void readData(const char* fileName, MemberNode** list);
 void writeData(const char* fileName, MemberNode* list);
 
-#endif 
+#endif

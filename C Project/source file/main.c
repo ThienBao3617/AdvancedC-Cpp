@@ -1,5 +1,4 @@
-//#define _CRT_SECURE_NO_WARNINGS
-#include "gui.h"
+#include "UI.h"
 
 void readData(const char* fileName, MemberNode** list) {
     char row[500];
@@ -13,7 +12,7 @@ void readData(const char* fileName, MemberNode** list) {
     char* ptr;
     while (fgets(row, sizeof(row), file) != NULL) {
         Member curMember;
-        memset(&curMember, 0, sizeof(Member)); // Initialize the memory
+        memset(&curMember, 0, sizeof(Member)); 
 
         int cnt = 0;
 

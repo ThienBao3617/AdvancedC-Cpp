@@ -1,5 +1,4 @@
-//#define _CRT_SECURE_NO_WARNINGS
-#include "structure.h"
+#include "data.h"
 
 MemberNode* createMemberNode(Member member) {
     MemberNode* newNode = (MemberNode*)malloc(sizeof(MemberNode));
@@ -124,7 +123,7 @@ void editMember(MemberNode** list, const char* uid) {
 
 void getInfo(Member* member) {
     printf("UID: %s\n", member->uid);
-    printf("Room Number: %s\n", member->roomNumber);
+printf("Room Number: %s\n", member->roomNumber);
     printf("Name: %s\n", member->name);
     printf("License Plate: %s\n", member->licensePlate);
     printf("__________________________________________\n");

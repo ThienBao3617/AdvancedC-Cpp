@@ -1,5 +1,5 @@
-#ifndef __STRUCTURE_H_
-#define __STRUCTURE_H_
+#ifndef __DATA_H_
+#define __DATA_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,4 +28,4 @@ void searchByUID(MemberNode* list, const char* uid);
 void searchByLicensePlate(MemberNode* list, const char* licensePlate);
 void searchMember(MemberNode* list);
 
-#endif 
+#endif
