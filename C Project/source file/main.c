@@ -46,3 +46,10 @@ void writeData(const char* fileName, MemberNode* list) {
 
     fclose(file);
 }
+
+MemberNode* list = NULL;
+
+int main() {
+	displayMenu("residents.csv", &list);
+	return 0;
+}
