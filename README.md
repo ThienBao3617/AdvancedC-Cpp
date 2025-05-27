@@ -2012,3 +2012,76 @@ The file is not opened because it does not exist in the source directory.
 
 **PLEASE READ ABOUT FILE OPERATIONS AND EXAMPLES TO UNDERSTAND MORE IN THIS LINK BELOW**
 https://www.geeksforgeeks.org/basics-file-handling-c/
+
+# **LESSON 13: OVERVIEW OF MULTITHREADING**
+![alt text](assets/multithre.png)
+
+Normally, most programs run sequentially from top to bottom, meaning that the current task must be completed before the next one. In small programs, this may not seem to have much of an impact, but for large programs running in real time with strict and precise requirements on time to process data accurately, sequential programming is no longer effective.
+
+-> That's why multithreading was born to solve the above problem.
+
+## Concepts
+![alt text](assets/pthread.png)
+- A thread is understood as the smallest execution unit of a process. Each process contains multiple threads and allows them to run in parallel.
+- The tasks will share a common program resource, but have their own stack and counter.
+- In essence, multithreading is still sequential, but it divides the execution time between tasks.
+### Advantages of multithreading
+- Multitasking.
+- Increases processing speed and optimizes the program.
+- Suitable for real-time systems such as embedded systems.
+
+## pthread library in C
+In c, programming is supported through the library ***__#include<pthreah.h>*** which provides APIs to perform functions such as:
+### Synchronization
+- Allows threads to share common resources and process them safely
+### Thread control
+- Allows creation, management and coordination with other threads
+### Basic APIs
+#### 1. Create a thread
+
+    int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void*), void *arg);
+
+- **thread:** pointer to store the ID of the newly created thread.
+- **attr:** thread property, defaults to NULL.
+- **start_routine:** function pointer to store the address of the task to be executed.
+- **arg:** arguments passed to **start_routine**.
+
+#### 2. Waiting for a thread to end
+
+    int pthread_join(pthread_t thread, void **retval);
+
+- **thread:** ID of the thread to be waited.
+- **retval:** pointer to the return value from the thread, defaults to NULL.
+
+#### 3. APIs for mutex synchronization
+This is a mechanism that allows functions to share common resources to process data in multi-threading. However, it ensures that at each time only 1 thread is allowed to access the resource to avoid conflicts and ensure the safety of that shared resource. The mutex operation process is as follows:
+
+***Initialize mutex:***
+
+    int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
+
+- **mutex:** pointer to the mutex that was just initialized.
+- **attr:** thread property, defaults to NULL.
+
+***Lock mutex:***  
+-> If the mutex is not locked, the current thread will lock the mutex and do its work.
+
+-> Other threads will wait until the mutex is unlocked before being allowed to use the resource.
+
+    int pthread_mutex_lock(pthread_mutex_t *mutex);
+
+***Unlock mutex:***  
+-> Once the work is done, the current thread unlocks the muxtex allowing other threads to access the resource.
+
+    int pthread_mutex_unlock(pthread_mutex_t *mutex);
+
+***Destroy mutex:***  
+-> Purpose: Releases system resources allocated to mutex.
+
+-> Only call after making sure no thread is using mutex.
+
+    int pthread_mutex_destroy(pthread_mutex_t *mutex);
+
+
+
+
