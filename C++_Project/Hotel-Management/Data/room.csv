@@ -1,0 +1,5 @@
+# rooms.csv
+roomID,type,price,isBooked
+101,Single,500,0
+102,Double,800,1
+103,Suite,1500,0
