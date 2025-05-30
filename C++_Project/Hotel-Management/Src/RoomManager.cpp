@@ -55,13 +55,49 @@ bool RoomManager::isRoomExist(int roomID) const {
     return findRoomIndex(roomID) != -1;
 }
 
-bool RoomManager::isRoomAvailable(int roomID) const {}
+bool RoomManager::isRoomAvailable(int roomID) const {
+    int idx = findRoomIndex(roomID);
+    if(idx == -1) return false;
+    return !rooms[idx].getIsBooked();
+}
 
-void RoomManager::bookRoom(int roomID) {}
+void RoomManager::bookRoom(int roomID) {
+    int idx = findRoomIndex(roomID);
+    if(idx == -1){
+        cout << "Room " << roomID << " not found.\n";
+        return;
+    }
+    if(rooms[idx].getIsBooked()){
+        cout << "Room " << roomID << " is already booked.\n";
+        return;
+    }
+    rooms[idx].setBooked(true);
+    cout << "Room " << roomID << " booked successfully.\n";
+}
 
-void RoomManager::checkoutRoom(int roomID) {}
+void RoomManager::checkoutRoom(int roomID) {
+    int idx = findRoomIndex(roomID);
+    if(idx == -1){
+        cout << "Room " << roomID << " not found.\n";
+        return;
+    }
+    if(!rooms[idx].getIsBooked()){
+        cout << "Room " << roomID << " is not currently booked.\n";
+        return;
+    }
+    rooms[idx].setBooked(false);
+    cout << "Room " << roomID << " is now available.\n";
+}
 
-void RoomManager::displayAllRooms() const {}
+void RoomManager::displayAllRooms() const {
+    cout << "-------------------------------------------\n";
+    cout << " ID\t| Type\t| Price\t| Status    |\n";
+    cout << "-------------------------------------------\n";
+    for(const auto& r : rooms){
+        r.display();
+    }
+    cout << "-------------------------------------------\n";
+}
 
 void RoomManager::addRoom() {}
 
