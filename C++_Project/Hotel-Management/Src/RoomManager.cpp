@@ -99,7 +99,43 @@ void RoomManager::displayAllRooms() const {
     cout << "-------------------------------------------\n";
 }
 
-void RoomManager::addRoom() {}
+void RoomManager::addRoom() {
+    int id;
+    string t;
+    double p;
+
+    cout << "Enter Room ID: ";
+    cin >> id;
+    // check if enter wrong
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Enter Room ID again: ";
+        cin >> id;
+    }
+
+    if(isRoomExist(id)){
+        cout << "Room " << id << " already exists.\n";
+        return;
+    }
+
+    cout << "Enter Room Type (e.g., Single/Double/Suite): ";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, t);
+
+    cout << "Enter Price per night: ";
+    cin >> p;
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Enter Price again: ";
+        cin >> p;
+    }
+
+    Room newRoom(id, t, p, false);
+    rooms.push_back(newRoom);
+    cout << "Room added successfully.\n";
+}
 
 void RoomManager::modifyRoom(int roomID) {}
 
