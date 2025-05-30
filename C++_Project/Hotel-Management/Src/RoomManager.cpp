@@ -166,6 +166,65 @@ void RoomManager::modifyRoom(int roomID) {
     cout << "Room " << roomID << " update successfully.\n";
 }
 
-void RoomManager::deleteRoom(int roomID) {}
+void RoomManager::deleteRoom(int roomID) {
+    int idx = findRoomIndex(roomID);
+    if(idx == -1){
+        cout << "Room " << roomID << " not found.\n";
+        return;
+    }
+    rooms.erase(rooms.begin() + idx);
+    cout << "Room " << roomID << " deleted successfully.\n";
+}
 
-void RoomManager::showMenu() {}
+void RoomManager::showMenu() {
+    int choice;
+    do{
+        cout << "\n===== Room Management =====\n";
+        cout << "1. Display all rooms\n";
+        cout << "2. Add new room\n";
+        cout << "3. Modify room\n";
+        cout << "4. Delete room\n";
+        cout << "5. Book room\n";
+        cout << "6. Check out room\n";
+        cout << "0. Back to Main Menu\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        switch(choice){
+            case 1:
+                displayAllRooms();
+                break;
+            case 2:
+                addRoom();
+                break;
+            case 3:
+                int id;
+                cout << "Enter Room ID to modify: ";
+                cin >> id;
+                modifyRoom(id);
+                break;
+            case 4:
+                int id;
+                cout << "Enter Room ID to delete: ";
+                cin >> id;
+                deleteRoom(id);
+                break;
+            case 5:
+                int id;
+                cout << "Enter Room ID to book: ";
+                cin >> id;
+                bookRoom(id);
+                break;
+            case 6:
+                int id;
+                cout << "Enter Room ID to check out: ";
+                cin >> id;
+                checkoutRoom(id);
+                break;
+            case 0:
+                cout << "Returning to Main Menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Try again.\n";
+        }
+    }while (choice != 0);
+}
