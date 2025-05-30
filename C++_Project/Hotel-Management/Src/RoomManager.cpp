@@ -137,7 +137,34 @@ void RoomManager::addRoom() {
     cout << "Room added successfully.\n";
 }
 
-void RoomManager::modifyRoom(int roomID) {}
+void RoomManager::modifyRoom(int roomID) {
+    int idx = findRoomIndex(roomID);
+    if(idx == -1){
+        cout << "Room " << roomID << " not found.\n";
+        return;
+    }
+
+    cout << "Current Type: " << rooms[idx].getType() << "\n";
+    cout << "Enter new Type: ";
+    string newType;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, newType);
+    rooms[idx].setType(newType);
+
+    cout << "Current Price: " << rooms[idx].getPrice() << "\n";
+    cout << "Enter new Price: ";
+    double newPrice;
+    cin >> newPrice;
+    while(cin.fail()){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input. Enter new Price again: ";
+        cin >> newPrice;
+    }
+    rooms[idx].setPrice(newPrice);
+
+    cout << "Room " << roomID << " update successfully.\n";
+}
 
 void RoomManager::deleteRoom(int roomID) {}
 
