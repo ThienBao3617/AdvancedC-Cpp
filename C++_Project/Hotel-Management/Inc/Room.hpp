@@ -1,8 +1,10 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
-#include <string>
 using namespace std;
+
+#include <string>
+
 class Room{
 private:
     int roomID; // room's code, e.g. 101, 102,..

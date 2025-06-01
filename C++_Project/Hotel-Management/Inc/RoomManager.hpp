@@ -1,6 +1,8 @@
 #ifndef ROOMMANAGER_HPP
 #define ROOMMANAGER_HPP
 
+using namespace std;
+
 #include <vector>
 #include <string>
 #include "Room.hpp"
@@ -17,13 +19,13 @@ public:
     // read file CSV (e.g. Data/room.csv) and load into vector<Room>
     void loadFromFile(const string& filename);
     // save vector<Room> into file CSV (overwrite or append)
-    void saveToFile(const string& filename);
+    void saveToFile(const string& filename) const;
 
     // --- Operation functions ---
     void addRoom(); // Require user to enter info, add room
     void modifyRoom(int roomID); // Edit room type or price of a given roomID
     void deleteRoom(int roomID); // delete room with roomID
-    void displayAllRoom() const; // display table of all the room + status
+    void displayAllRooms() const; // display table of all the room + status
 
     bool isRoomExist(int roomID) const; // check if roomID in vector or not
     bool isRoomAvailable(int roomID) const; // check isBooked == false
