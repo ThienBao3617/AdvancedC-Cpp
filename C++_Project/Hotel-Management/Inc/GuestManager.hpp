@@ -19,9 +19,9 @@ public:
 	void saveToFile(const string& filename) const;
 
 	void addGuest(RoomManager& roomMgr); // Require user to enter info and book room
-	void modifyGuest(int guestID) const; // Edit guest info (not including room changes)
+	void modifyGuest(int guestID); // Edit guest info (not including room changes)
 	void deleteGuest(int guestID); // Delete guest (but need to check if checked out yet)
-	void displayAllGuest() const;
+	void displayAllGuests() const;
 
 	int findGuestIndex(int guestID) const;
 	bool isGuestExist(int guestID) const;
