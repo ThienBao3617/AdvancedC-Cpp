@@ -1,0 +1,3 @@
+bookingID,guestID,roomID,checkIn,checkOut,roomCharge,serviceCharge,totalCharge
+1,1,101,2025-06-10,2025-06-12,1000,100,1100
+2,2,103,2025-06-15,2025-06-18,800,200,1000
