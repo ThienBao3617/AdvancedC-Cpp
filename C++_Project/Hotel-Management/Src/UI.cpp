@@ -2,7 +2,6 @@
 #include <iostream>
 #include <limits>
 
-
 using namespace std;
 
 #ifdef _WIN32
@@ -14,9 +13,9 @@ using namespace std;
 namespace UI {
 
 void printWelcome() {
-    std::cout << "=====================================\n";
-    std::cout << "   Welcome to Hotel Management App   \n";
-    std::cout << "=====================================\n";
+    cout << "=====================================\n";
+    cout << "   Welcome to Hotel Management App   \n";
+    cout << "=====================================\n";
 }
 
 void clearScreen() {

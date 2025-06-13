@@ -179,6 +179,7 @@ void RoomManager::deleteRoom(int roomID) {
 
 void RoomManager::showMenu() {
     int choice;
+    int id;
     do{
         cout << "\n===== Room Management =====\n";
         cout << "1. Display all rooms\n";
@@ -198,25 +199,21 @@ void RoomManager::showMenu() {
                 addRoom();
                 break;
             case 3:
-                int id;
                 cout << "Enter Room ID to modify: ";
                 cin >> id;
                 modifyRoom(id);
                 break;
             case 4:
-                int id;
                 cout << "Enter Room ID to delete: ";
                 cin >> id;
                 deleteRoom(id);
                 break;
             case 5:
-                int id;
                 cout << "Enter Room ID to book: ";
                 cin >> id;
                 bookRoom(id);
                 break;
             case 6:
-                int id;
                 cout << "Enter Room ID to check out: ";
                 cin >> id;
                 checkoutRoom(id);
