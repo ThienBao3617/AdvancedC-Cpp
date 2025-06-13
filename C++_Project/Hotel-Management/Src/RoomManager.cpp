@@ -1,4 +1,5 @@
 #include "RoomManager.hpp"
+#include "Utils.hpp" 
 #include <fstream> // use for read file, write file
 #include <iostream>
 #include <limits> // use for ignore wrong input

@@ -1,4 +1,5 @@
 #include "GuestManager.hpp"
+#include "Utils.hpp"
 #include <fstream>
 #include <iostream>
 #include <limits>
